@@ -1,0 +1,29 @@
+.hangman {
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.hangman line {
+  stroke: black;
+  stroke-width: 4;
+}
+.hangman.dead line,
+.hangman.dead circle {
+  stroke: red;
+}
+.hangman #door1 {
+  transform-origin: 0% 100%;
+  transition: transform 1s;
+}
+.hangman #door1.open {
+  transform: rotateZ(-45deg);
+}
+.hangman #door2 {
+  transform-origin: 56% 78%;
+  transition: transform 1s;
+}
+.hangman #door2.open {
+  transform: rotateZ(45deg);
+}
+.hangman .hide {
+  visibility: hidden;
+}

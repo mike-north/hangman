@@ -1,0 +1,47 @@
+<svg height="400" width="400" class="hangman {{if this.isDead "dead" ""}}">
+  <g id="body">
+    {{#if this.showRope}}
+    <line id="rope" x1="200" y1="20" x2="200" y2="60" />
+    {{/if}}
+    {{#if this.showHead}}
+    <g id="head">
+      <circle cx="200" cy="80" r="20" stroke="black" stroke-width="4" fill="white" />
+      <g id="rEyes" class="{{if this.isDead "hide" ""}}">
+        <circle cx="193" cy="80" r="4" />
+        <circle cx="207" cy="80" r="4" />
+      </g>
+      <g id="xEyes" class="{{if this.isDead "" "hide"}}">
+        <line x1="190" y1="78" x2="196" y2="84" />
+        <line x1="204" y1="78" x2="210" y2="84" />
+        <line x1="190" y1="84" x2="196" y2="78" />
+        <line x1="204" y1="84" x2="210" y2="78" />
+      </g>
+    </g>
+    {{/if}}
+    {{#if this.showBody}}
+    <line x1="200" y1="100" x2="200" y2="150" />
+    {{/if}}
+    {{#if this.showLArm}}
+    <line id="armL" x1="200" y1="120" x2="170" y2="140" />{{/if}}
+    {{#if this.showRArm}}
+    <line id="armR" x1="200" y1="120" x2="230" y2="140" />{{/if}}
+    {{#if this.showLLeg}}
+    <line id="legL" x1="200" y1="150" x2="180" y2="190" />{{/if}}
+    {{#if this.showRLeg}}
+    <line id="legR" x1="200" y1="150" x2="220" y2="190" />{{/if}}
+  </g>
+  <line x1="10" y1="250" x2="150" y2="250" />
+  <line class="door" id="door1" x1="150" y1="250" x2="200" y2="250" />
+  <line class="door" id="door2" x1="200" y1="250" x2="250" y2="250" />
+  <line x1="250" y1="250" x2="390" y2="250" />
+  <line x1="100" y1="250" x2="100" y2="20" />
+  <line x1="100" y1="20" x2="200" y2="20" />
+</svg>
+
+<h3>{{this.wordWithBlanks}}</h3>
+<h5>Wrongs: {{this.numWrongGuesses}}</h5>
+{{#if (not this.isDead)}}
+{{!-- {{else}} --}}
+<input value={{this.guessString}} onkeyup={{action this.guessListener}} />
+{{/if}}
+{{this.guessString}}
